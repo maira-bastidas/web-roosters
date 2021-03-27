@@ -1,0 +1,71 @@
+{% extends 'portafolio/base.html' %}
+{% load i18n %}
+{% block title %} Gallos {% endblock title %}
+{% block content %}
+    <!-- SECTION -->
+    <div class="section">
+        <!-- container -->
+        <div class="container">
+            <!-- row -->
+            <div class="row">
+                <!-- section title -->
+                <div class="col-md-12">
+                    <div class="section-title">
+                        <h4 class="title">Animales en inicio de proceso de cuido</h4>
+                    </div>
+                </div>
+                <!-- /section title -->
+
+                <!-- Products tab & slick -->
+                {% if animales_en_inicio_de_proceso %}
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="products-tabs">
+                                <!-- tab -->
+                                <div id="tab1" class="tab-pane active">
+                                    <div class="products-slick" data-nav="#slick-nav-1">
+                                        <!-- product -->
+                                        {% for pollo in animales_en_inicio_de_proceso %}
+                                        <div class="product">
+                                            <div class="product-img">
+                                                <img src="{{ pollo.foto.url }}" alt="">
+                                            </div>
+                                            <div class="product-body">
+                                                <p class="product-category">Categoría: {{ pollo.categoria }}</p>
+                                                <h3 class="product-name"><a href="#">Código: {{ pollo.nombre_gallo }}</a></h3>
+                                                <h4 class="product-price">Precio: ${{pollo.precio}}
+                                                </h4>
+                                                <h5 class="product-old">Origen: {{pollo.origen_animal}}</h5>
+                                                <div class="product-btns">
+                                                    <button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span
+                                                            class="tooltipp">add to wishlist</span></button>
+                                                    <button class="add-to-compare"><i class="fa fa-exchange"></i><span
+                                                            class="tooltipp">add to compare</span></button>
+                                                    <button class="quick-view"><i class="fa fa-eye"></i><span
+                                                            class="tooltipp">quick view</span></button>
+                                                    <p> Descripción: {{ pollo.descripcion }}</p>
+                                                </div>
+                                            </div>
+                                            <div class="add-to-cart">
+                                                <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add
+                                                    to cart
+                                                </button>
+                                            </div>
+                                        </div>
+                                        {% endfor %}
+                                    </div>
+                                    <div id="slick-nav-1" class="products-slick-nav"></div>
+                                </div>
+                                <!-- /tab -->
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+                <!-- Products tab & slick -->
+            </div>
+            <!-- /row -->
+        </div>
+        <!-- /container -->
+    </div>
+    <!-- /SECTION -->
+{% endblock content %}
